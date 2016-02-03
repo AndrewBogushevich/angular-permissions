@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../dist/js/vendor.js" type="text/javascript"></script>
+    <script src="../dist/js/app.js" type="text/javascript"></script>
+    <script src="demoApp.js" type="text/javascript"></script>
+</head>
+<body ng-app="demoApp">
+    <header>
+        <h3>Angular Permissions Demo</h3>
+    </header>
+
+    <main ng-controller="DemoCtrl as demo">
+
+        <div>model.val1</div>
+        <access-field permissions="'model.val1'">
+            <to-read>
+                <span ng-bind="demo.model.val1"></span>
+            </to-read>
+            <to-write>
+                <input type="text" ng-model="demo.model.val1"/>
+            </to-write>
+        </access-field>
+
+        <div>model.val2</div>
+        <input type="text" ng-model="demo.model.val2"/>
+
+        <div>model.valObj</div>
+
+        <div>model.valObj.val1</div>
+        <input type="text" ng-model="demo.model.valObj.objval1"/>
+
+        <div>model.valObj.val2</div>
+        <input type="text" ng-model="demo.model.valObj.objval2"/>
+    </main>
+
+</body>
+</html>
