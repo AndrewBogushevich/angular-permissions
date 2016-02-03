@@ -5,10 +5,10 @@ var config = require('./config'),
 	$ = require('gulp-load-plugins')();
 
 gulp.task('css-app:update', function(callback) {
-	$.sequence('css-app:build', 'postbuild')(callback);
+	$.sequence('css-app:build')(callback);
 });
 gulp.task('js-app:update', function(callback) {
-	$.sequence('js-app:build', 'postbuild')(callback);
+	$.sequence('js-app:build')(callback);
 });
 
 gulp.task('watch', function(callback) {

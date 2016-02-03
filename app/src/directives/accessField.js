@@ -17,21 +17,20 @@ angular.module('angular-permissions')
 
 			var firstObjStr = $scope.permissions.split('.')[0];
 
-			PermissionSrv.onChange(function(){
-				$scope.accessLvl = PermissionSrv.checkPermission(
-					$scope.permissions,
-					{	[firstObjStr]: $scope.$parent.$eval(firstObjStr)	}, //pass jsObj entity
-					$scope.settings
-				);
-			});
-
-			$scope.accessLvl = PermissionSrv.checkPermission(
-				$scope.permissions,
-				{	[firstObjStr]: $scope.$parent.$eval(firstObjStr)	}, //pass jsObj entity
-				$scope.settings
-			);
+			setPermissions()
 
 			$scope.can = PermissionSrv.can;
+
+			$scope.$watch('settings', function(newVal, oldVal) {
+				setPermissions();
+			})
+
+			function setPermissions () {
+				$scope.accessLvl = PermissionSrv.checkPermission(
+					$scope.permissions,
+					$scope.settings
+				);
+			}
 		}
 	};
 

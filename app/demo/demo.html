@@ -14,7 +14,7 @@
 
     <main ng-controller="DemoCtrl as demo">
 
-        <div>model.val1</div>
+        <h4>model.val1</h4>
         <access-field permissions="'model.val1'">
             <to-read>
                 <span ng-bind="demo.model.val1"></span>
@@ -24,16 +24,26 @@
             </to-write>
         </access-field>
 
-        <div>model.val2</div>
+        <h4>model.val2</h4>
         <input type="text" ng-model="demo.model.val2"/>
 
-        <div>model.valObj</div>
+        <h4>model.valObj</h4>
 
-        <div>model.valObj.val1</div>
+        <h4>model.valObj.val1</h4>
         <input type="text" ng-model="demo.model.valObj.objval1"/>
 
-        <div>model.valObj.val2</div>
-        <input type="text" ng-model="demo.model.valObj.objval2"/>
+        <h4>model.valObj.val2</h4>
+        <access-field permissions="'model.valObj.objval2'" settings="{value: settingsVal}">
+            <to-read>
+                <span ng-bind="demo.model.valObj.objval2"></span>
+            </to-read>
+            <to-write>
+                <input type="text" ng-model="demo.model.valObj.objval2"/>
+            </to-write>
+        </access-field>
+
+        <h4>settings.value(READ on 5, DENIED on 10)</h4>
+        <input type="text" ng-model="settingsVal">
     </main>
 
 </body>
