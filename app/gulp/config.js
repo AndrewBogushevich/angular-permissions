@@ -5,10 +5,10 @@ var fs = require('fs'),
     $ = require('gulp-load-plugins')();
 
 var root = fs.realpathSync(__dirname + '/..'),
-    bower = root + '/bower_components',
+    npm = fs.realpathSync(__dirname + '/../..') + '/node_modules',
     dist = root + '/dist',
     src = root + '/src';
 
-exports.bower = bower;
+exports.npm = npm;
 exports.dist = dist;
 exports.src = src;

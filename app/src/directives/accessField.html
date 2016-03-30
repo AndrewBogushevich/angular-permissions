@@ -1,2 +1,2 @@
-<div ng-transclude="toRead" ng-if="accessLvl == can.read"></div>
-<div ng-transclude="toWrite" ng-if="accessLvl == can.write"></div>
+<div ng-transclude="toRead" ng-if="getAccessLvl() === can.read"></div>
+<div ng-transclude="toWrite" ng-if="getAccessLvl() === can.write"></div>

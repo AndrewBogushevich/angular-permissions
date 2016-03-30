@@ -5,28 +5,20 @@ angular.module('angular-permissions')
 		// restrict: 'EA',
 		templateUrl: 'directives/accessField.html',
 		transclude: {
-			'toRead': 'toRead',
-			'toWrite': 'toWrite'
+			'toRead': '?toRead',
+			'toWrite': '?toWrite'
 		},
 		scope: {
 			permissions: '=',
 			settings: '='
 		},
 		controller: function ($scope, PermissionSrv) {
-			var accessSco = $scope;
-
 			var firstObjStr = $scope.permissions.split('.')[0];
 
-			setPermissions()
+			$scope.can = PermissionSrv.can;	
 
-			$scope.can = PermissionSrv.can;
-
-			$scope.$watch('settings', function(newVal, oldVal) {
-				setPermissions();
-			})
-
-			function setPermissions () {
-				$scope.accessLvl = PermissionSrv.checkPermission(
+			$scope.getAccessLvl = function getAccessLvl () {
+				return PermissionSrv.checkPermission(
 					$scope.permissions,
 					$scope.settings
 				);

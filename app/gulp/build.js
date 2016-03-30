@@ -40,7 +40,7 @@ gulp.task('js-app:build', function() {
 
 gulp.task('js-vendor:build', function() {
     return gulp.src([
-        config.bower + '/angular/angular.js',
+        config.npm + '/angular/angular.js',
     ])
         // .pipe($.uglify())
         .pipe($.concat('vendor.js'))

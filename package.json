@@ -1,6 +1,6 @@
 {
   "name": "angular-permissions",
-  "version": "1.0.0",
+  "version": "0.0.3",
   "description": "easy manipulate permissions",
   "main": "gulpfile.js",
   "scripts": {
@@ -10,13 +10,14 @@
     "type": "git",
     "url": "git+https://github.com/AndrewBogushevich/angular-permissions.git"
   },
-  "author": "",
+  "author": "Andrew Bogushevich",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/AndrewBogushevich/angular-permissions/issues"
   },
   "homepage": "https://github.com/AndrewBogushevich/angular-permissions#readme",
   "dependencies": {
+    "angular": "^1.5.0",
     "bower": "^1.7.7",
     "event-stream": "^3.3.2",
     "gulp": "^3.9.0",

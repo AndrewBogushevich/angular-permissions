@@ -1,3 +1,36 @@
+angular.module('angular-permissions', []);
+angular.module("angular-permissions").run(["$templateCache", function($templateCache) {$templateCache.put("directives/accessField.html","<div ng-transclude=\"toRead\" ng-if=\"getAccessLvl() === can.read\"></div><div ng-transclude=\"toWrite\" ng-if=\"getAccessLvl() === can.write\"></div>");}]);
+angular.module('angular-permissions')
+.directive('accessField', [function(){
+
+	var DDO = {
+		// restrict: 'EA',
+		templateUrl: 'directives/accessField.html',
+		transclude: {
+			'toRead': '?toRead',
+			'toWrite': '?toWrite'
+		},
+		scope: {
+			permissions: '=',
+			settings: '='
+		},
+		controller: function ($scope, PermissionSrv) {
+			var firstObjStr = $scope.permissions.split('.')[0];
+
+			$scope.can = PermissionSrv.can;	
+
+			$scope.getAccessLvl = function getAccessLvl () {
+				return PermissionSrv.checkPermission(
+					$scope.permissions,
+					$scope.settings
+				);
+			}
+		}
+	};
+
+	return DDO;
+}]);
+
 angular.module('angular-permissions')
 .service('PermissionSrv', ['permissionConfig', function(permissionConfig){
 	var WRITE	= 'W';
@@ -72,3 +105,10 @@ angular.module('angular-permissions')
 
 	return srv;
 }])
+angular.module('angular-permissions')
+	.constant('permissionConfig', 
+	{
+		role: 'clinician'
+	})
+
+
