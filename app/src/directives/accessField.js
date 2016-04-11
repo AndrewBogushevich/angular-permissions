@@ -15,14 +15,18 @@ angular.module('angular-permissions')
 		controller: function ($scope, PermissionSrv) {
 			var firstObjStr = $scope.permissions.split('.')[0];
 
-			$scope.can = PermissionSrv.can;	
-
-			$scope.getAccessLvl = function getAccessLvl () {
+			var getAccessLvl = function getAccessLvl () {
 				return PermissionSrv.checkPermission(
 					$scope.permissions,
 					$scope.settings
 				);
-			}
+			};
+			
+			$scope.can = PermissionSrv.can;	
+			$scope.$watch(function(scope){
+				scope.accessLvl = getAccessLvl();
+			});
+			
 		}
 	};
 
